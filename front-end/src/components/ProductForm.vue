@@ -21,7 +21,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import { productApi } from '../api/products';
+import api from '../api/index'; 
 
 const product = ref({
   name: '',
@@ -31,12 +31,18 @@ const product = ref({
 
 const saveProduct = async () => {
   try {
-    await productApi.create(product.value);
-    alert('Product saved successfully!');
-    product.clear(); 
-    product.value = { name: '', code: '', price: 0 };
+    await api.post('/products', product.value);
+    
+    alert('Produto salvo com sucesso!');
+    
+    product.value = { 
+      name: '', 
+      code: '', 
+      price: 0 
+    };
   } catch (error) {
-    console.error("Error saving product:", error);
+    console.error("Erro ao salvar produto:", error);
+    alert('Erro ao salvar. Verifique se o código do produto já existe no Oracle.');
   }
 };
 </script>
