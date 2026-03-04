@@ -1,11 +1,11 @@
 <template>
   <div class="card">
-    <h3>Cadastrar Matéria Prima</h3>
+    <h3>Register Raw Material</h3>
 
     <form @submit.prevent="saveMaterial">
 
       <div class="form-group">
-        <label>Nome:</label>
+        <label>Name:</label>
         <input 
           v-model="material.name" 
           type="text" 
@@ -25,7 +25,7 @@
       </div>
 
       <div class="form-group">
-        <label>Quantidade de estoque:</label>
+        <label>Stock Quantity:</label>
         <input 
           v-model.number="material.stockQuantity" 
           type="number" 
@@ -34,7 +34,7 @@
       </div>
 
       <button type="submit" class="btn btn-primary">
-        Salvar no Banco
+        Save to Database
       </button>
 
     </form>
@@ -65,7 +65,7 @@ const saveMaterial = async () => {
 
   } catch (error) {
     console.error("Error saving:", error);
-    alert('Erro ao salvar. Verifique o console do IntelliJ.');
+    alert('Error saving. Check IntelliJ console.');
   }
 };
 </script>

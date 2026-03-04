@@ -1,20 +1,20 @@
 <template>
   <div class="card mt-4">
-    <h3>Resgistro de Produto</h3>
+    <h3>Product Registration</h3>
     <form @submit.prevent="saveProduct">
       <div class="form-group mb-2">
-        <label>Nome do Produto</label>
+        <label>Product Name</label>
         <input v-model="product.name" type="text" class="form-control" placeholder="Ex: Chair" required>
       </div>
       <div class="form-group mb-2">
-        <label>Codigo:</label>
+        <label>Code:</label>
         <input v-model="product.code" type="text" class="form-control" placeholder="Ex: CH-001" required>
       </div>
       <div class="form-group mb-2">
-        <label>Preço de venda(R$):</label>
+        <label>Sale Price (R$):</label>
         <input v-model.number="product.price" type="number" step="0.01" class="form-control" required>
       </div>
-      <button type="submit" class="btn btn-primary">Salvar produto</button>
+      <button type="submit" class="btn btn-primary">Save Product</button>
     </form>
   </div>
 </template>
@@ -33,7 +33,7 @@ const saveProduct = async () => {
   try {
     await api.post('/products', product.value);
     
-    alert('Produto salvo com sucesso!');
+    alert('Product saved successfully!');
     
     product.value = { 
       name: '', 
@@ -41,8 +41,8 @@ const saveProduct = async () => {
       price: 0 
     };
   } catch (error) {
-    console.error("Erro ao salvar produto:", error);
-    alert('Erro ao salvar. Verifique se o código do produto já existe no Oracle.');
+    console.error("Error saving product:", error);
+    alert('Error saving. Check if the product code already exists in Oracle.');
   }
 };
 </script>
